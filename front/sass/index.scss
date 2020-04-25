@@ -1,0 +1,19 @@
+header{
+    @include header;
+    
+}
+
+.productDisplay{
+    @include product_sheet;
+}
+
+#listeDesProduits{
+    @include product_list;
+}
+
+.image{
+    
+    @include image_size;
+    
+
+}

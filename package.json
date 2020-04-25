@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	  "start": "node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./front/sass/main.scss:./front/css/style.css",
+    "watch": "webpack -d --watch",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",

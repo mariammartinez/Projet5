@@ -1,0 +1,27 @@
+@mixin header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rosybrown;
+    height: 200px;
+}
+
+@mixin product_sheet {
+    background-color: #d9d9d9;
+    width: 20%;
+   /* border: 1px solid black;*/
+    margin: 30px 15px 20px 15px;
+    box-shadow: -1px 1px 18px 4px rgba(101,101,101,0.45);
+}
+
+@mixin product_list {
+    display: flex;
+    justify-content: space-around;  
+    flex-wrap: wrap;
+}
+
+@mixin image_size {
+   width: 100%;
+   
+    
+}
