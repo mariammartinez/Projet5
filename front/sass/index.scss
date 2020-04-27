@@ -1,7 +1,3 @@
-header{
-    @include header;
-    
-}
 
 .productDisplay{
     @include product_sheet;
@@ -14,6 +10,17 @@ header{
 .image{
     
     @include image_size;
-    
+}
 
+#productPage{
+    @include product_page_display;
+}
+
+a{
+    text-decoration-line: none;
+    color: $color_font;
+}
+
+.productDescription{
+    @include product_description_display;
 }

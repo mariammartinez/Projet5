@@ -34,17 +34,11 @@ module.exports = {
                     let description=document.createElement('div');
                     console.log (description);
 
-                /* let button=document.createElement('a');
-                    console.log (button);*/
-
-
                     // mettre produit dans element
                     description.innerHTML = 'Prix total' +productList[productIndex].price ;
                     el.classList.add("productDisplay");
                 
-                    text.innerHTML = '<name>'+productList[productIndex].name;
-
-                
+                    text.innerHTML = productList[productIndex].name;
 
                     let urlImage = productList[productIndex].imageUrl;
                     let image = urlImage.replace("http://localhost:3000","front");

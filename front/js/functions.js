@@ -28,8 +28,11 @@ module.exports = {
         let price = document.createElement('div');
         price.innerHTML = 'Prix Total'+ productList[productIndex].price;
 
-        //comment recuperer la liste de produits du back,
-        //comment faire par page generé par produits? 
     }
+
+    //totalPriceProduct : function (){
+      //  let totalPrice = document.createElement('p')
+        
+    //}
 
 }
