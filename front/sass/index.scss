@@ -21,6 +21,22 @@ a{
     color: $color_font;
 }
 
+#cart_product{
+    @include display_panier;
+}
+
 .productDescription{
     @include product_description_display;
+}
+
+#final_product{
+     @include final_product;
+}
+
+#contact_form{
+    @include contact_form_display;
+}
+
+.form-example{
+    @include form_display;
 }

@@ -28,3 +28,30 @@
     padding: 20px;
     color: $color_font;
 }
+
+@mixin display_panier {
+    display: flex;
+    justify-content: space-around;
+    border: gray 1px solid;
+    margin: 10px;
+    width: 100%;
+}
+
+@mixin final_product {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    align-items: center;
+
+}
+
+@mixin contact_form_display{
+    width: 50%;
+    margin: 10px;
+    
+}
+
+@mixin form_display{
+    margin: 10px;
+    
+}

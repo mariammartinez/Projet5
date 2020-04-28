@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
 
     document.getElementById('pp').appendChild(link);
 
-let img = functions.createImage('https://www.w3schools.com/images/colorpicker.gif', 'popo');
+let img = functions.createImage('https://www.w3schools.com/+images/colorpicker.gif', 'popo');
 document.getElementById('pp').appendChild(img);
 
 let mlgl = functions.createImageLink('product.html', 'mon produit', img);
@@ -22,15 +22,22 @@ const functions = require('./js/functions.js');
 
 const home = require('./js/home.js');
 const product = require('./js/product.js');
+const panier = require('./js/panier.js');
 
+ //window event
 window.addEventListener('load', function () {
 
     let el = document.getElementById('listeDesProduits');
     if(el !== null){
         home.generateHtml();
-    }else{
+    }
+    else if(document.getElementById('page_panier')!== null){
+        panier.generateHTML();
+    }
+    else if(document.getElementById("productPage")!== null){
         product.generateHTML();
     }
+    
 
     
 

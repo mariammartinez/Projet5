@@ -27,9 +27,33 @@ a {
   color: black;
 }
 
+#cart_product {
+  display: flex;
+  justify-content: space-around;
+  border: gray 1px solid;
+  margin: 10px;
+  width: 100%;
+}
+
 .productDescription {
   padding: 20px;
   color: black;
+}
+
+#final_product {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  align-items: center;
+}
+
+#contact_form {
+  width: 50%;
+  margin: 10px;
+}
+
+.form-example {
+  margin: 10px;
 }
 
 footer {
@@ -51,7 +75,7 @@ header {
   font-family: "Caveat Brush", cursive;
   font-size: 2.5rem;
   text-decoration-line: none;
-  color: blue;
+  color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
