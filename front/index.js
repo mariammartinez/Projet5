@@ -1,22 +1,4 @@
 
-/*const functions = require('./js/functions.js');
-
-
-window.addEventListener('load', function () {
-    let link = functions.createLink('product.html', 'mon produit', 'bonjour');
-
-    document.getElementById('pp').appendChild(link);
-
-let img = functions.createImage('https://www.w3schools.com/+images/colorpicker.gif', 'popo');
-document.getElementById('pp').appendChild(img);
-
-let mlgl = functions.createImageLink('product.html', 'mon produit', img);
-console.log(mlgl);
-document.getElementById('pp').appendChild(mlgl);
-
-});*/
-
-
 
 const functions = require('./js/functions.js');
 
@@ -26,6 +8,8 @@ const panier = require('./js/panier.js');
 
  //window event
 window.addEventListener('load', function () {
+    
+    functions.displayCart();
 
     let el = document.getElementById('listeDesProduits');
     if(el !== null){

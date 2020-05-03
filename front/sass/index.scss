@@ -40,3 +40,16 @@ a{
 .form-example{
     @include form_display;
 }
+
+.image_panier{
+    width: 40%;
+}
+.display_in_cart{
+    width: 25%;
+}
+
+.cart_product{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}

@@ -1,8 +1,8 @@
+const functions = require('./functions.js');
 
 module.exports = {
 
     generateHtml: function(){
-
 
         let request = new XMLHttpRequest();
         request.onreadystatechange = function() {

@@ -56,6 +56,20 @@ a {
   margin: 10px;
 }
 
+.image_panier {
+  width: 40%;
+}
+
+.display_in_cart {
+  width: 25%;
+}
+
+.cart_product {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
 footer {
   display: flex;
   justify-content: space-around;

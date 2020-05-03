@@ -39,34 +39,24 @@ module.exports= {
 
         request.open("GET", urlToBeRequested);
         request.send();
+
         //add button event
-         
         let button = document.getElementById('buttonAdd');
         console.log(button);
         button.addEventListener('click', function(){
-            let numberElement = document.getElementById("produitNumber");
-            let numberProduct = numberElement.value;
+            let numberElement = parseInt(document.getElementById("produitNumber").value);
 
-            let data;
+            //if more than 0 product added
+            if(numberElement > 0){
 
-            // get cookie
-            let cookie = functions.getCookie('data');
-            if(cookie != ""){
-                 data = JSON.parse(cookie);
+                functions.setNumberProduct(productId, numberElement);
+
+                //add cart item
+                let productAdded = document.getElementById("cartItem");
+                productAdded.innerHTML = numberElement;
+        
+                alert("Produit ajouté");
             }
-            else{
-                data = {};
-            }
-
-          //creer le cookie
-            data[productId]=numberProduct;
-            console.log(data);
-            let str = JSON.stringify(data);
-            console.log(str);
-            document.cookie = "data="+ str+"; path=/";
-       
         } ) 
-
-
     }
 }
