@@ -1,9 +1,13 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .productDisplay {
-  background-color: #f3e9f1;
+  background-color: #ecf0ef;
   width: 20%;
-  /* border: 1px solid black;*/
   margin: 30px 20px 20px 20px;
-  box-shadow: -1px 1px 18px 4px rgba(101, 101, 101, 0.45);
+  box-shadow: 2px 5px 15px -3px #505050;
+  padding: 10px;
 }
 
 #listeDesProduits {
@@ -14,6 +18,15 @@
 
 .image {
   width: 100%;
+}
+
+.productImage {
+  width: 100%;
+  box-shadow: 2px 5px 15px -3px #505050;
+}
+
+.productPicture {
+  width: 45%;
 }
 
 #productPage {
@@ -57,17 +70,55 @@ a {
 }
 
 .image_panier {
-  width: 40%;
+  width: 100%;
 }
 
 .display_in_cart {
   width: 25%;
 }
 
-.cart_product {
+#confirmation_product {
   display: flex;
   justify-content: space-around;
   align-content: center;
+}
+
+.cart_product {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ecf0ef;
+  margin: 10px;
+  padding: 5px;
+  width: 70%;
+  box-shadow: 2px 5px 15px -3px #505050;
+  align-content: center;
+}
+
+/*button{
+    display: box;
+    background-color: #4ef18f;
+    border: none;
+    border-radius: 2em;
+    font-family: $font_body;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 2px 5px 15px -3px #505050;
+
+}
+button:hover{
+    border: black solid 2px;
+}*/
+.button_clean {
+  background-color: none;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+}
+
+.button_clean:hover {
+  color: #b3c3bf;
 }
 
 footer {
@@ -86,10 +137,20 @@ header {
   align-items: center;
   background-color: #f3e9f1;
   height: 100px;
-  font-family: "Caveat Brush", cursive;
-  font-size: 2.5rem;
   text-decoration-line: none;
   color: black;
+}
+header h1 {
+  font-size: 2.5rem;
+  font-family: "Caveat Brush", cursive;
+}
+header li {
+  list-style: none;
+  padding: 10px;
+}
+header ul {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=style.css.map */

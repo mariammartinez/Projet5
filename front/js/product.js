@@ -32,7 +32,7 @@ module.exports= {
                 let urlImage = product.imageUrl;
                 let image = urlImage.replace("http://localhost:3000", "");
                 photoProduit.src =  "../"+ image;
-                photoProduit.classList.add("image");       
+                photoProduit.classList.add("productImage");       
 
             }
         }

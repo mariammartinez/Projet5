@@ -7,14 +7,19 @@
         <script src="https://kit.fontawesome.com/bef505d875.js" crossorigin="anonymous"></script>
         <script src="../dist/app.bundle.js"></script>  
         <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
         <title>Orinoco</title>
     </head>
     <body>
     <header>
             <!-- logo + panier--> 
             <h1><a href="../../index.html">ORINOCO</a></h1>
-            <i class="fas fa-shopping-cart"></i>
-            <p id="cartItem">()</p>
+            <ul>
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><i class="fas fa-shopping-cart"></i> <span id="cartItem">()</span></li>
+                
+            </ul>
+           
     </header> 
         <main id="display_page">
             <section id="page_panier">
@@ -23,7 +28,7 @@
                 <form action="confirmation.html" method="get" class="form-example">
                     <div class="form-example">
                       <label for="name">Nom: </label>
-                      <input type="text" name="name" id="name" required>
+                      <input type="text" name="name" id="lastName" required>
                     </div>
                     <div class="form-example">
                         <label for="name">Prenom: </label>
@@ -35,11 +40,12 @@
                     </div>
                     <div class="form-example">
                         <label for="phone">Téléphone: </label>
-                        <input type="tel" name="userephone" id="phonenumber" placeholder="06 22 33 44 55" required>
+                        <input type="tel" name="userephone" id="phoneNumber" placeholder="06-22-33-44-55" 
+                        pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
                     </div>
                     <div class="form-example">
-                        <label for="adresse"> adresse </label>
-                        <input type="text" name="useradresse" id="adresse" required>
+                        <label for="address"> adresse </label>
+                        <input type="text" name="useradresse" id="address" required>
                       </div>
                     
                     <div class="form-example">

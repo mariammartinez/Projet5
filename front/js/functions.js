@@ -41,6 +41,19 @@ module.exports = {
         }
         return data;
     },
+    
+    getInfo: function(){
+        let info;
+        let panier = sessionStorage.getItem('info');
+        if(panier != null){
+            info = JSON.parse(panier);
+        }
+        else{
+            info = {};
+        }
+        return info;
+    },
+
 
     displayCart: function(){
         // update panier count
@@ -125,7 +138,7 @@ module.exports = {
                             let productList = JSON.parse(this.responseText);
                             resolve(productList);
                         }else{
-                            reject(request);
+                            //reject(request);
                         }
                     }
                 }
@@ -142,7 +155,10 @@ module.exports = {
                 }
             }
             return false;
-        }
+        },
+
+       
+        
 
 }
 

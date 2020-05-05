@@ -5,11 +5,15 @@ const functions = require('./js/functions.js');
 const home = require('./js/home.js');
 const product = require('./js/product.js');
 const panier = require('./js/panier.js');
+const confirmation = require('./js/confirmation.js')
 
  //window event
 window.addEventListener('load', function () {
     
-    functions.displayCart();
+  
+    if (document.getElementById("confirmation_product") === null){
+        functions.displayCart();
+    }
 
     let el = document.getElementById('listeDesProduits');
     if(el !== null){
@@ -20,6 +24,9 @@ window.addEventListener('load', function () {
     }
     else if(document.getElementById("productPage")!== null){
         product.generateHTML();
+    }
+    else if (document.getElementById("confirmation_product")!== null){
+        confirmation.generateHTML();
     }
     
 
