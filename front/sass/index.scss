@@ -68,8 +68,8 @@ a{
     background-color: #ecf0ef;
     margin: 10px;
     padding: 5px;
-    width: 70%;
-    box-shadow: 2px 5px 15px -3px #505050;
+    width: 100%;
+    box-shadow: $box_shadow;
     align-content: center;
 
 }
@@ -99,4 +99,19 @@ button:hover{
 .button_clean:hover{
    color: darken($color:#ecf0ef, $amount: 20);
 
+}
+
+
+#display_total_panier{
+    @include  car_total_display;
+}
+
+#display_page{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#page_panier{
+    width: 70%;
 }

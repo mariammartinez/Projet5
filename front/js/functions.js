@@ -1,6 +1,6 @@
-
+//functions
 module.exports = {
-
+    //create dom element image
     createImage: function(src, alt){
         let el = document.createElement('img');
         el.src = src;
@@ -8,31 +8,19 @@ module.exports = {
         return el;
     },
 
+    //create dom link
     createLink: function(href, title, innerHtml){
-        let button = document.createElement('a');
-        button.href = href;
-        button.title = title;
-        button.innerHTML = innerHtml;
-        return button;
+        let link = document.createElement('a');
+        link.href = href;
+        link.title = title;
+        link.innerHTML = innerHtml;
+        return link;
     },
 
-    createImageLink: function(href, title, img){
-        let button = document.createElement('a');
-        button.href = href;
-        button.title = title;
-        button.appendChild(img);
-        return button;
-    },
-
-    createProductPrice: function(){
-        let price = document.createElement('div');
-        price.innerHTML = 'Prix Total'+ productList[productIndex].price;
-
-    },
-
-    getData: function(){
+    // get sessionStorage Data et return json
+    getSessionStorageData: function(key){
         let data;
-        let panier = sessionStorage.getItem('data');
+        let panier = sessionStorage.getItem(key);
         if(panier != null){
             data = JSON.parse(panier);
         }
@@ -41,23 +29,11 @@ module.exports = {
         }
         return data;
     },
-    
-    getInfo: function(){
-        let info;
-        let panier = sessionStorage.getItem('info');
-        if(panier != null){
-            info = JSON.parse(panier);
-        }
-        else{
-            info = {};
-        }
-        return info;
-    },
-
+   
 
     displayCart: function(){
         // update panier count
-        let data = this.getData();
+        let data = this.getSessionStorageData("data");
         let productCount = 0;
         for ( let productId in data){
             productCount = productCount+ data[productId];
@@ -68,7 +44,7 @@ module.exports = {
 
     //get number products 
     getNumberProduct: function(productId){
-        let data = this.getData();
+        let data = this.getSessionStorageData("data");
         let nb;
         if(typeof data[productId] !== "undefined"){
             nb = data[productId];
@@ -117,7 +93,7 @@ module.exports = {
 
             let totalCart = 0;
             //boucle pour trouver tous les produits
-            let data = this.getData();
+            let data = this.getSessionStorageData("data");
             for ( let productId in data){
                 let product = this.getProductById(productId,backData);
                 let totalParProduct = this.totalProductCart(productId, product.price);
@@ -127,6 +103,16 @@ module.exports = {
             }
             return totalCart;
 
+        },
+
+        totalArticlesToPay: function(){
+            let totalArticle = 0;
+            //boucle pour trouver les articles
+            let data = this.getSessionStorageData("data");
+            for ( let productId in data){
+               totalArticle = totalArticle + data[productId];
+            }
+            return totalArticle;
         },
 
         getBack: function(){

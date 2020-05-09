@@ -53,7 +53,7 @@ module.exports= {
 
                 //add cart item
                 let productAdded = document.getElementById("cartItem");
-                productAdded.innerHTML = numberElement;
+                productAdded.innerHTML = functions.totalArticlesToPay();
         
                 alert("Produit ajouté");
             }

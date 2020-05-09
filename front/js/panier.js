@@ -8,11 +8,14 @@ module.exports= {
         .then(function(backData){
 
             // get data from session storage
-            let data = functions.getData();
+            let data = functions.getSessionStorageData("data");
 
             // generate html of this product
             let elementParent = document.getElementById('page_panier');
-            let elementTotal = document.createElement('p');
+            let elementTotalCart = document.createElement('p');
+            elementTotalCart.classList.add('block-total-cart');
+            let elementTotalArticle = document.createElement('p');
+           
 
             // for each product
             for ( let productId in data){
@@ -21,17 +24,17 @@ module.exports= {
                 let product = functions.getProductById(productId, backData)
                   
                 // create element
-                let section = document.createElement('section');
-                section.classList.add('cart_product');
+                let article = document.createElement('article');
+                article.classList.add('cart_product');
                 let photo = document.createElement('img');
                 let productName = document.createElement('p');
                 let productPrice = document.createElement('p');
                 let quantite = document.createElement('input');
                 let totalProduct = document.createElement('p');
-                let totalcart = document.createElement('p');
+                let totalCart = document.createElement('p');                
                 let buttonClean = document.createElement('button');
                 buttonClean.classList.add('button_clean');
-                let elTotalPrice = document.createElement('div');
+                let elTotalProductPrice = document.createElement('div');
 
                 // add product in element
 
@@ -51,19 +54,27 @@ module.exports= {
                 //display input qtt
                 quantite.setAttribute("type", "number");
                 quantite.setAttribute("value", productCount);
-                quantite.setAttribute("min", "0");
+                quantite.setAttribute("min", "1");
                 quantite.setAttribute("max", "10");
                 quantite.addEventListener("change", function(){
                     //get value
                     let quantiteProduct = quantite.value;
                     //set session storage
                     functions.setNumberProduct(productId,quantiteProduct);
-                    //modif total price
-                    let totalPrice = functions.totalProductCart(productId, product.price);
-                    elTotalPrice.innerHTML =totalPrice + "€";
+                    //modif total price par produit 
+                    let totalProductPrice = functions.totalProductCart(productId, product.price);
+                    elTotalProductPrice.innerHTML = "Sous-total: " + totalProductPrice + "€";
                     //total cart + modif
-                    elementTotal.innerHTML = "Total " + functions.totalToPay(backData) + "€";
-                    elementPage.appendChild(elementTotal);
+                    elementTotalCart.innerHTML = "Total cart: " + functions.totalToPay(backData) + "€";
+                    elementPage.appendChild(elementTotalCart);
+                    //total article cart + modif
+                    elementTotalArticle.innerHTML = "Total articles ="+functions.totalArticlesToPay();
+                    elementTotalCart.appendChild(elementTotalArticle);
+
+                    //modif cart display
+                    let productAdded = document.getElementById("cartItem");
+                    productAdded.innerHTML = functions.totalArticlesToPay();
+
                 })
 
                 
@@ -80,41 +91,41 @@ module.exports= {
                     delete data[productId];
                     let str = JSON.stringify(data);
                     sessionStorage.setItem("data", str);
-                    section.remove();
+                    article.remove();
 
                 });
 
                 //link to product page 
-
                 let linkProduct = document.createElement('a');
                 linkProduct.href="./product.html?id="+product._id;
                 linkProduct.classList.add("display_in_cart");
                 linkProduct.appendChild(photo);
 
                 //total price par product
-
-                let totalPrice = functions.totalToPay(productId, product.price);
-                elTotalPrice.innerHTML = totalPrice + "€";
+                let totalProductPrice = functions.totalProductCart(productId, product.price);
+                elTotalProductPrice.innerHTML = totalProductPrice + "€";
+                console.log(totalProductPrice);
                   
                 // add child              
-                elementParent.appendChild(section);
-                section.appendChild(linkProduct);
-                section.appendChild(productName);
-                section.appendChild(productPrice);
-                section.appendChild(quantite);
-                section.appendChild(buttonClean);
-                section.appendChild(elTotalPrice);
+                elementParent.appendChild(article);
+                article.appendChild(linkProduct);
+                article.appendChild(productName);
+                article.appendChild(productPrice);
+                article.appendChild(quantite);
+                article.appendChild(buttonClean);
+                article.appendChild(elTotalProductPrice);
             }
 
-                //function total cart
-            let elementPage = document.getElementById('display_page');
+                //show total cart 
+            let elementPage = document.getElementById('display_total_panier');
 
-
-            elementTotal.innerHTML = "Total " + functions.totalToPay(backData) + "€";
-            elementPage.appendChild(elementTotal);
+            elementTotalCart.innerHTML = "Total :" + functions.totalToPay(backData) + "€";
+            elementTotalArticle.innerHTML = "Total articles :"+functions.totalArticlesToPay();
+                //add child
+            elementPage.appendChild(elementTotalArticle);
+            elementPage.appendChild(elementTotalCart);
 
             //get form data
-
             let form = document.getElementById('contact_form');
             console.log(form);
             form.addEventListener('submit', function(){
@@ -138,11 +149,7 @@ module.exports= {
                 
                 } )
 
-               
-
-                
-
-         
+                            
 
 
         })

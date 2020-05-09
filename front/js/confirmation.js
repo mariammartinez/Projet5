@@ -9,11 +9,11 @@ module.exports= {
             console.log(backData);
 
         //get form
-        let formSession = functions.getInfo();
+        let formSession = functions.getSessionStorageData("info");
         console.log(formSession);
          
         //get data
-        let dataSession = functions.getData();
+        let dataSession = functions.getSessionStorageData();
         console.log(dataSession);
 
         //get element html
@@ -28,8 +28,7 @@ module.exports= {
 
         //add to element
         nameClient.innerHTML = "Merci " + formSession.name + " " + formSession.lastName;
-        
-        
+    
         emailConfirmation.innerHTML = "Un e-mail vous a été envoyé à l'adresse " + formSession.email;
        
          // for each product

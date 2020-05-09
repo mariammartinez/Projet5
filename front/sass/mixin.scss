@@ -3,7 +3,7 @@
     background-color: #ecf0ef;
     width: 20%;
     margin: 30px 20px 20px 20px;
-    box-shadow: 2px 5px 15px -3px #505050;
+    box-shadow: $box_shadow;
     padding: 10px;
 }
 
@@ -15,7 +15,7 @@
 
 @mixin product_image_display {
    width: 100%;
-   box-shadow: 2px 5px 15px -3px #505050;
+   box-shadow: $box_shadow;
 }
 
 @mixin product_section_image {
@@ -72,5 +72,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
+}
+
+@mixin car_total_display {
+    display: block;
+    height: 200px;
+    width: 25%;
+    background-color: #ecf0ef;
+    margin: 10px 10px;
+    box-shadow: $box_shadow;
+    align-self: flex-end;
+    text-align: center;
     
 }
