@@ -59,10 +59,6 @@ a{
 }
 
 
-#confirmation_product{
-    @include display_confirmation;
-}
-
 .cart_product{
     @include cart_product_display;
     background-color: #ecf0ef;
@@ -114,4 +110,11 @@ button:hover{
 
 #page_panier{
     width: 70%;
+}
+
+.confirmation_product_display{
+    @include display_confirmation;
+}
+.image_confirmation{
+    width: 10%;
 }

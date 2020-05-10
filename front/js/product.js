@@ -20,20 +20,18 @@ module.exports= {
                 let priceProduit = document.getElementById('price');
                 let descriptionProduit = document.getElementById ('description');
                 let photoProduit = document.getElementById('productImage');
-                console.log(photoProduit);
-
         
                 //Mettre le produit dans l'element
-
                 nameProduit.innerHTML = product.name;
-                priceProduit.innerHTML = product.price;
+                priceProduit.innerHTML = "Prix: " + product.price + "€";
                 descriptionProduit.innerHTML = product.description;
 
+                //get img
                 let urlImage = product.imageUrl;
                 let image = urlImage.replace("http://localhost:3000", "");
                 photoProduit.src =  "../"+ image;
-                photoProduit.classList.add("productImage");       
-
+                photoProduit.classList.add("productImage"); 
+   
             }
         }
 
@@ -49,11 +47,11 @@ module.exports= {
             //if more than 0 product added
             if(numberElement > 0){
 
-                functions.setNumberProduct(productId, numberElement);
+                functions.updateProductCount(productId, numberElement);
 
                 //add cart item
                 let productAdded = document.getElementById("cartItem");
-                productAdded.innerHTML = functions.totalArticlesToPay();
+                productAdded.innerHTML = functions.getTotalArticlesCount();
         
                 alert("Produit ajouté");
             }

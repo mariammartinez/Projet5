@@ -5,6 +5,7 @@
     margin: 30px 20px 20px 20px;
     box-shadow: $box_shadow;
     padding: 10px;
+    text-align: center;
 }
 
 @mixin product_list {
@@ -63,7 +64,7 @@
 
 @mixin display_confirmation {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-content: center;
 }
 

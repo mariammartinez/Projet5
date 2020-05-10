@@ -12,7 +12,9 @@ window.addEventListener('load', function () {
     
   
     if (document.getElementById("confirmation_product") === null){
-        functions.displayCart();
+        
+        document.getElementById("cartItem").innerHTML=functions.getTotalArticlesCount();
+        
     }
 
     let el = document.getElementById('listeDesProduits');

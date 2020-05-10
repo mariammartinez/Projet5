@@ -29,21 +29,15 @@ module.exports = {
         }
         return data;
     },
-   
 
-    displayCart: function(){
-        // update panier count
-        let data = this.getSessionStorageData("data");
-        let productCount = 0;
-        for ( let productId in data){
-            productCount = productCount+ data[productId];
-        }
-        let productAdded = document.getElementById("cartItem");
-        productAdded.innerHTML = productCount;
+    // set sessionStorage Data et return json
+    setSessionStorageData: function(key, value){
+        let str = JSON.stringify(value);
+        sessionStorage.setItem(key, str);
     },
-
-    //get number products 
-    getNumberProduct: function(productId){
+   
+    //get number of articles 
+    getArticlesCount: function(productId){
         let data = this.getSessionStorageData("data");
         let nb;
         if(typeof data[productId] !== "undefined"){
@@ -54,94 +48,107 @@ module.exports = {
         return nb;
     },
 
-        //function total product price
-        totalProductCart: function(productId, price){
-            //trouver la quantite de produits
-            let numberProduct = this.getNumberProduct(productId);
-            //multiplier par  le prix
-            let totalprice = numberProduct * price;
-            return totalprice;
-        },
+    // total product price
+    getTotalPriceByProduct: function(productId, price){
+        //trouver la quantite de produits
+        let numberProduct = this.getArticlesCount(productId);
+        //multiplier par  le prix
+        let totalprice = numberProduct * price;
+        return totalprice;
+    },
 
-        setNumberProduct: function(productId, nb){
-            // convert to number
-            nb = parseInt(nb);
+    //update product count in sessionStorage
+    updateProductCount: function(productId, nb){
+        // convert to number
+        nb = parseInt(nb);
 
-            // get data from session storage
-            let panier = sessionStorage.getItem('data');
-            if(panier != null){
-                data = JSON.parse(panier);
-            }
-            else{
-                data = {};
-            }
+        // get data from session storage
+        let data = this.getSessionStorageData("data");
+       
+        // if no product, delete, else update
+        if(nb === 0){
+            delete data[productId];
+        }else{
+            data[productId] = nb;
+        }
 
-            // if no product, delete, else update
-            if(nb === 0){
-                delete data[productId];
-            }else{
-                data[productId] = nb;
-            }
+        // go back to session storage
+        let str = JSON.stringify(data);
+        sessionStorage.setItem("data", str);
+    },
 
-            // go back to session storage
-            let str = JSON.stringify(data);
-            sessionStorage.setItem("data", str);
-        },
+    // get total price
+    getFinalPrice: function(backData){
+        let totalCart = 0;
+        //boucle pour trouver tous les produits
+        let data = this.getSessionStorageData("data");
+        for ( let productId in data){
+            let product = this.getProductById(productId,backData);
+            let totalParProduct = this.getTotalPriceByProduct(productId, product.price);    
+            //total car adition
+            totalCart = totalCart + totalParProduct;
+        }
+        return totalCart;
+    },
 
-        // function total panier
-        totalToPay: function(backData){
+    //get number of articles in the cart
+    getTotalArticlesCount: function(){
+        let totalArticle = 0;
+        //boucle pour trouver les articles
+        let data = this.getSessionStorageData("data");
+        for ( let productId in data){
+            totalArticle = totalArticle + data[productId];
+        }
+        return totalArticle;
+    },
 
-            let totalCart = 0;
-            //boucle pour trouver tous les produits
-            let data = this.getSessionStorageData("data");
-            for ( let productId in data){
-                let product = this.getProductById(productId,backData);
-                let totalParProduct = this.totalProductCart(productId, product.price);
-                   
-                //total car adition
-                totalCart = totalCart + totalParProduct;
-            }
-            return totalCart;
-
-        },
-
-        totalArticlesToPay: function(){
-            let totalArticle = 0;
-            //boucle pour trouver les articles
-            let data = this.getSessionStorageData("data");
-            for ( let productId in data){
-               totalArticle = totalArticle + data[productId];
-            }
-            return totalArticle;
-        },
-
-        getBack: function(){
-            return new Promise(function(resolve, reject){
-                let request = new XMLHttpRequest();
-                request.onreadystatechange = function() {
-                    if (this.readyState == XMLHttpRequest.DONE){
-                        if(this.status == 200){
-                            let productList = JSON.parse(this.responseText);
-                            resolve(productList);
-                        }else{
-                            //reject(request);
-                        }
+    //get back all products
+    getBackAllProducts: function(){
+        return new Promise(function(resolve, reject){
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE){
+                    if(this.status == 200){
+                        let backData = JSON.parse(this.responseText);
+                        resolve(backData);
+                    }else{
+                        //reject(request);
                     }
                 }
-                request.open("GET", "http://localhost:3000/api/furniture");
-                request.send();
-            });
-        },
+            }
+            request.open("GET", "http://localhost:3000/api/furniture");
+            request.send();
+        });
+    },
 
-        // get product from backdata
-        getProductById: function(id, backData){
-            for(product of backData){
-                if(product._id == id){
-                    return product;
+    // get product from backdata
+    getProductById: function(id, backData){
+        for(product of backData){
+            if(product._id == id){
+                return product;
+            }
+        }
+        return false;
+    },
+    getReference: function(data){
+        return new Promise(function(resolve, reject){
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE){
+                    if(this.status == 200 || this.status == 201){
+                        let backData = JSON.parse(this.responseText);
+                        resolve(backData);
+                    }else{
+                        //reject(request);
+                    }
                 }
             }
-            return false;
-        },
+            // todo trouver comment mettre data dans request pour envoyer en json
+            request.open("POST", "http://localhost:3000/api/furniture/order");
+            request.setRequestHeader("Content-Type", "application/json");
+            request.send(JSON.stringify(data));
+        });
+    },
 
        
         
