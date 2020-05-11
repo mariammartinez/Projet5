@@ -19,23 +19,29 @@ module.exports= {
         let dataSession = functions.getSessionStorageData("data");
         console.log(dataSession);
 
+        let orderRefer = functions.getSessionStorageData("order");
+        console.log(orderRefer);
+
         //get element html
         let elementParent = document.getElementById('confirmation_display');
-
         let emailConfirmation = document.getElementById('confirmationEmail');
         let nameClient = document.getElementById('thanks');
         let articlesTotal = document.getElementById('articles_total');
         let priceTotal = document.getElementById('price_total');
+        let orderReference = document.getElementById('orderRef');
+        let contactId = document.getElementById('contact_name');
+        let contactAdresse = document.getElementById('contact_adresse');
         
-        //create element
-        
-
-
+   
         //add to element
-        nameClient.innerHTML = "Merci " + formSession.name + " " + formSession.lastName;
+        nameClient.innerHTML = "Merci " + formSession.name;
         emailConfirmation.innerHTML = "Un e-mail vous a été envoyé à l'adresse " + formSession.email;
         articlesTotal.innerHTML = "Total articles :"+functions.getTotalArticlesCount();
-        priceTotal.innerHTML = "Total cart: " + functions.getFinalPrice(backData) + "€";
+        priceTotal.innerHTML = "Total : " + functions.getFinalPrice(backData) + "€";
+        orderReference.innerHTML = "Votre numero de commande: "+ orderRefer;
+        contactId.innerHTML = formSession.name + " " + formSession.lastName;
+        contactAdresse.innerHTML = formSession.adresse + " " + formSession.CodePostal + " " + formSession.ville;
+
        
         // for each product
         for ( let productId in dataSession){

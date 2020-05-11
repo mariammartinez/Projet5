@@ -128,6 +128,7 @@ module.exports= {
                 contact.email = document.getElementById('email').value;
                 contact.adresse = document.getElementById('adresse').value;
                 contact.ville = document.getElementById('ville').value;
+                contact.CodePostal = document.getElementById('CodePostal').value;
                 
                 // récupérer les données des articles
                 let products = [];
@@ -155,13 +156,12 @@ module.exports= {
                     functions.setSessionStorageData('info', contact);
                     functions.setSessionStorageData('order', jsonReturn.orderId);
 
-
-                 
                     // rediriger vers confirmation.html
-                   // window.location.replace("./confirmation.html");
-
-                 
+                    window.location.replace("./confirmation.html");
                 })
+
+                article.remove();
+
                 /*.catch(function(request){
                     alert('error back unfound');
                 })*/

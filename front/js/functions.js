@@ -20,7 +20,7 @@ module.exports = {
     // get sessionStorage Data et return json
     getSessionStorageData: function(key){
         let data;
-        let panier = sessionStorage.getItem(key);
+        let panier = localStorage.getItem(key);
         if(panier != null){
             data = JSON.parse(panier);
         }
@@ -33,7 +33,7 @@ module.exports = {
     // set sessionStorage Data et return json
     setSessionStorageData: function(key, value){
         let str = JSON.stringify(value);
-        sessionStorage.setItem(key, str);
+        localStorage.setItem(key, str);
     },
    
     //get number of articles 
@@ -74,7 +74,7 @@ module.exports = {
 
         // go back to session storage
         let str = JSON.stringify(data);
-        sessionStorage.setItem("data", str);
+        localStorage.setItem("data", str);
     },
 
     // get total price
@@ -149,6 +149,10 @@ module.exports = {
             request.send(JSON.stringify(data));
         });
     },
+
+    deleteItems: function() {
+        localStorage.clear();
+      } 
 
        
         

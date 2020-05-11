@@ -10,11 +10,10 @@ const confirmation = require('./js/confirmation.js')
  //window event
 window.addEventListener('load', function () {
     
-  
+    console.log(document.domain);
+
     if (document.getElementById("confirmation_product") === null){
-        
-        document.getElementById("cartItem").innerHTML=functions.getTotalArticlesCount();
-        
+        document.getElementById("cartItem").innerHTML = functions.getTotalArticlesCount();
     }
 
     let el = document.getElementById('listeDesProduits');
@@ -33,14 +32,4 @@ window.addEventListener('load', function () {
     
 
     
-
-    //let productId = url.replace('html/product.html?id=', '');
-
-    //alert(productId);
-   
-   //if(window.location == index.html){
-
-   //}
-    //home.generateHtml();
-
 });
