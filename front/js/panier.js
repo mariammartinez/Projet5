@@ -160,7 +160,6 @@ module.exports= {
                     window.location.replace("./confirmation.html");
                 })
 
-                article.remove();
 
                 /*.catch(function(request){
                     alert('error back unfound');

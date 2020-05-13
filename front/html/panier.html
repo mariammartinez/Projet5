@@ -13,13 +13,13 @@
     <body>
         <header>
             <!-- logo + panier--> 
-            <h1><a href="../../index.html">ORINOCO</a></h1>
+            <h1><img src="../images/panier.jpg" alt="panier"><a href="../../index.html">ORINOCO</a></h1>
             <ul>
                 <li><a href="../../index.html">Accueil</a></li>
                 <li><i class="fas fa-shopping-cart"></i> <span id="cartItem">()</span></li>
             </ul>
         </header> 
-        <main id="display_page">
+        <main id="display_page_panier">
             <section id="page_panier"></section>
             <section id="display_total_panier">
                 <p id="display_price_panier"></p>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-example">
                         <label for="CodePostal">Code postal:</label>
-                        <input type="number" name="CodePostal" id="CodePostal" required>
+                        <input type="text" name="CodePostal" id="CodePostal" placeholder="75000" maxlength="5" required>
                     </div>
                     <div class="form-example">
                         <label for="ville">Ville</label>

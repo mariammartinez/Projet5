@@ -139,7 +139,7 @@ module.exports = {
                         let backData = JSON.parse(this.responseText);
                         resolve(backData);
                     }else{
-                        //reject(request);
+                        reject(request);
                     }
                 }
             }

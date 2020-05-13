@@ -62,10 +62,11 @@
     
 }
 
-@mixin display_confirmation {
+@mixin display_product_confirmation {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
+    flex-wrap: wrap;
 }
 
 
@@ -73,17 +74,50 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: $colorbg_product;
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+    box-shadow: $box_shadow;
+    align-content: center;
+
     
 }
 
-@mixin car_total_display {
+@mixin cart_total_display {
     display: block;
     height: 200px;
     width: 25%;
-    background-color: #ecf0ef;
+    background-color: $colorbg_product;
     margin: 10px 10px;
     box-shadow: $box_shadow;
     align-self: flex-end;
     text-align: center;
     
+}
+
+@mixin display_buttonAdd {    
+    display: box;
+    background-color: $colorbg-header;
+    border: none;
+    border-radius: 2em;
+    font-family: $font_body;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: $box_shadow;
+    
+}
+
+@mixin display_panier_page {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;    
+}
+
+@mixin display_confirmation {
+    margin: 20px 10% 20px 10%;
+    padding: 15px;
+    background-color: $colorbg_product;
+
 }

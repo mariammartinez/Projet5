@@ -61,30 +61,14 @@ a{
 
 .cart_product{
     @include cart_product_display;
-    background-color: #ecf0ef;
-    margin: 10px;
-    padding: 5px;
-    width: 100%;
-    box-shadow: $box_shadow;
-    align-content: center;
-
 }
 
-/*button{
-    display: box;
-    background-color: #4ef18f;
-    border: none;
-    border-radius: 2em;
-    font-family: $font_body;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    box-shadow: 2px 5px 15px -3px #505050;
- 
+#buttonAdd{
+    @include display_buttonAdd; 
 }
-button:hover{
+#buttonAdd:hover{
     border: black solid 2px;
-}*/
+}
 
 .button_clean{
     background-color: none;
@@ -99,22 +83,61 @@ button:hover{
 
 
 #display_total_panier{
-    @include  car_total_display;
+    @include  cart_total_display;
 }
 
-#display_page{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+#display_page_panier{
+   @include display_panier_page;
 }
 
 #page_panier{
     width: 70%;
 }
 
-.confirmation_product_display{
-    @include display_confirmation;
+#confirmation_product{
+    @include display_product_confirmation;
 }
+
 .image_confirmation{
     width: 10%;
 }
+
+#display_page_confirmation{
+    @include display_confirmation;
+}
+
+#orderRef{
+    font-weight: bolder;
+    font-size: 1,5rem;
+}
+
+#retourner{
+    :hover {
+    color: darken($color:#ecf0ef, $amount: 20);
+    }
+}
+
+.product_display{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+   
+}
+
+@media screen and (max-width: 800px){
+    .productDisplay{
+        width: 90%;
+    }
+
+    #page_panier{
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+    #display_total_panier{
+        width: 100%;
+    }
+}
+
+
+
