@@ -21,7 +21,7 @@ body {
   width: 100%;
 }
 
-.productImage {
+#productImage {
   width: 100%;
   box-shadow: 2px 5px 15px -3px #505050;
 }
@@ -34,7 +34,6 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 30px 15px;
-  flex-wrap: wrap;
 }
 
 a {
@@ -207,6 +206,10 @@ a {
 
   .image_confirmation {
     width: 20%;
+  }
+
+  #productPage {
+    flex-wrap: wrap;
   }
 }
 footer {

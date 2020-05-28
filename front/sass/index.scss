@@ -12,7 +12,7 @@ body{
 .image{
     width: 100%;
 }
-.productImage{
+#productImage{
     
     @include product_image_display;
 }
@@ -162,6 +162,10 @@ a{
 
     .image_confirmation{
         width: 20%;
+    }
+
+    #productPage{
+        flex-wrap: wrap;
     }
     
 
