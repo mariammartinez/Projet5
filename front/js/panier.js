@@ -3,14 +3,13 @@ const functions = require('../js/functions.js');
 module.exports= {
 
     generateHTML: function(){
-        
-
+      
         functions.getBackAllProducts()
         .then(function(backData){
-
-            // get data from session storage
-            let data = functions.getSessionStorageData("data");
-
+       
+            // get data from  storage
+            let data = functions.getStorageData("data");
+       
             // generate html of this product
             let elementParent = document.getElementById('page_panier');
             let productAdded = document.getElementById("cartItem");
@@ -42,10 +41,12 @@ module.exports= {
 
              
                 // transform img url
+              
                 let urlImage = product.imageUrl;
                 let image = urlImage.replace("http://localhost:3000","");
-                photo.src =  "../"+ image;
+                photo.src =  "front/"+ image;
                 photo.classList.add("image_panier"); 
+                photo.alt = 'photo';
 
                 productName.innerHTML = product.name;
                 productPrice.innerHTML = product.price+"€";
@@ -61,7 +62,7 @@ module.exports= {
                 quantite.addEventListener("change", function(){
                     //get value
                     let quantiteProduct = quantite.value;
-                    //set session storage
+                    //set  storage
                     functions.updateProductCount(productId,quantiteProduct);
                     //modif total price par produit 
                     let totalProductPrice = functions.getTotalPriceByProduct(productId, product.price);
@@ -133,12 +134,11 @@ module.exports= {
                 // récupérer les données des articles
                 let products = [];
                 // faire une boucle pour mettre les product ids dans l'array products (products.push(productId))
-                let data = functions.getSessionStorageData("data");
+                let data = functions.getStorageData("data");
                 for ( let productId in data){
                     products.push(productId);
                 }
-
-
+             
                 // créer un objet json contenant les produits et le contact
                 let objRequest = {
                     products: products,
@@ -152,9 +152,9 @@ module.exports= {
                 .then(function(jsonReturn){
                     console.log(jsonReturn);
 
-                    // stocker la réponse dans session storage
-                    functions.setSessionStorageData('info', contact);
-                    functions.setSessionStorageData('order', jsonReturn.orderId);
+                    // stocker la réponse dans  storage
+                    functions.setStorageData('info', contact);
+                    functions.setStorageData('order', jsonReturn.orderId);
 
                     // rediriger vers confirmation.html
                     window.location.replace("./confirmation.html");

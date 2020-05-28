@@ -1,4 +1,4 @@
-const functions = require('../js/functions.js');
+const functions = require('../js/functions');
 
 module.exports= {
 
@@ -29,7 +29,8 @@ module.exports= {
                 //get img
                 let urlImage = product.imageUrl;
                 let image = urlImage.replace("http://localhost:3000", "");
-                photoProduit.src =  "../"+ image;
+                photoProduit.src =  "front/"+ image;
+                photo.alt = 'photo';
                 photoProduit.classList.add("productImage"); 
    
             }
@@ -53,7 +54,9 @@ module.exports= {
                 let productAdded = document.getElementById("cartItem");
                 productAdded.innerHTML = functions.getTotalArticlesCount();
         
-                alert("Produit ajouté");
+                //alert("Produit ajouté");
+
+                MessageEvent ('producto');
             }
         } ) 
     }

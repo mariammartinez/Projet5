@@ -28,6 +28,8 @@
     display: flex;
     justify-content: space-between;
     margin: 30px 15px;
+    flex-wrap: wrap;
+    
 }
 
 @mixin product_description_display {
@@ -64,7 +66,7 @@
 
 @mixin display_product_confirmation {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: center;
     flex-wrap: wrap;
 }
@@ -75,8 +77,8 @@
     justify-content: space-around;
     align-items: center;
     background-color: $colorbg_product;
-    margin: 10px;
-    padding: 5px;
+    margin: 10px 0 10px 0;
+   
     width: 100%;
     box-shadow: $box_shadow;
     align-content: center;

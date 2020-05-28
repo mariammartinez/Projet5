@@ -34,12 +34,15 @@ header{
         margin: 0;
         padding: 0;
         h1{
-            font-size:2.5rem;
+            font-size:3rem;
+            text-align: center;
         }
-        ul{
-            padding: 0;
-            margin: 0;
-      
+        li{
+            font-size: 1rem;
+            display: flex;
+         }
+        .accueil{
+            display: none;
         }
     }
 

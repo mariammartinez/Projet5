@@ -1,7 +1,4 @@
-
-
 const functions = require('./js/functions.js');
-
 const home = require('./js/home.js');
 const product = require('./js/product.js');
 const panier = require('./js/panier.js');
@@ -19,6 +16,10 @@ window.addEventListener('load', function () {
     let el = document.getElementById('listeDesProduits');
     if(el !== null){
         home.generateHtml();
+  
+          document.getElementById("cartItem").innerHTML = functions.getTotalArticlesCount();
+
+ 
     }
     else if(document.getElementById('page_panier')!== null){
         panier.generateHTML();

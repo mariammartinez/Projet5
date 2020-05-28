@@ -1,24 +1,7 @@
 //functions
 module.exports = {
-    //create dom element image
-    createImage: function(src, alt){
-        let el = document.createElement('img');
-        el.src = src;
-        el.alt = alt;
-        return el;
-    },
-
-    //create dom link
-    createLink: function(href, title, innerHtml){
-        let link = document.createElement('a');
-        link.href = href;
-        link.title = title;
-        link.innerHTML = innerHtml;
-        return link;
-    },
-
-    // get sessionStorage Data et return json
-    getSessionStorageData: function(key){
+    // get localStorage Data et return json
+    getStorageData: function(key){
         let data;
         let panier = localStorage.getItem(key);
         if(panier != null){
@@ -30,15 +13,15 @@ module.exports = {
         return data;
     },
 
-    // set sessionStorage Data et return json
-    setSessionStorageData: function(key, value){
+    // set localStorage Data et return json
+    setStorageData: function(key, value){
         let str = JSON.stringify(value);
         localStorage.setItem(key, str);
     },
    
     //get number of articles 
     getArticlesCount: function(productId){
-        let data = this.getSessionStorageData("data");
+        let data = this.getStorageData("data");
         let nb;
         if(typeof data[productId] !== "undefined"){
             nb = data[productId];
@@ -57,13 +40,13 @@ module.exports = {
         return totalprice;
     },
 
-    //update product count in sessionStorage
+    //update product count in localStorage
     updateProductCount: function(productId, nb){
         // convert to number
         nb = parseInt(nb);
 
         // get data from session storage
-        let data = this.getSessionStorageData("data");
+        let data = this.getStorageData("data");
        
         // if no product, delete, else update
         if(nb === 0){
@@ -81,7 +64,7 @@ module.exports = {
     getFinalPrice: function(backData){
         let totalCart = 0;
         //boucle pour trouver tous les produits
-        let data = this.getSessionStorageData("data");
+        let data = this.getStorageData("data");
         for ( let productId in data){
             let product = this.getProductById(productId,backData);
             let totalParProduct = this.getTotalPriceByProduct(productId, product.price);    
@@ -95,7 +78,7 @@ module.exports = {
     getTotalArticlesCount: function(){
         let totalArticle = 0;
         //boucle pour trouver les articles
-        let data = this.getSessionStorageData("data");
+        let data = this.getStorageData("data");
         for ( let productId in data){
             totalArticle = totalArticle + data[productId];
         }

@@ -2,16 +2,22 @@ const functions = require('./functions.js');
 
 module.exports = {
 
+
+
     generateHtml: function(){
 
         functions.getBackAllProducts()
         .then(function(backData){
               
             let elementParent = document.getElementById('listeDesProduits');
-  
+            
+
+        
+
             for ( let productIndex in backData){
 
                 let product = backData[productIndex];
+
 
                 // create element
                 let el=document.createElement('div');
@@ -25,9 +31,10 @@ module.exports = {
                 let image = urlImage.replace("http://localhost:3000","front");
                 photo.src =  image;
                 photo.classList.add("image"); 
+                photo.alt = 'photo';
                 //create link product
                 let button=document.createElement('a');
-                button.href="front/html/product.html?id="+backData[productIndex]._id;
+                button.href="./product.html?id="+backData[productIndex]._id;
                 button.appendChild(name);
 
                 name.innerHTML = backData[productIndex].name;
@@ -47,9 +54,9 @@ module.exports = {
             /*.catch(function(request){
             alert('error back unfound');
         })*/
-                  
-                    
 
+
+       
     }
 
 }

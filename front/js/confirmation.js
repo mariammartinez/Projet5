@@ -12,14 +12,14 @@ module.exports= {
             console.log(backData);
 
             //get form
-            let formSession = functions.getSessionStorageData("info");
+            let formSession = functions.getStorageData("info");
             console.log(formSession);
             
             //get data
-            let dataSession = functions.getSessionStorageData("data");
+            let dataSession = functions.getStorageData("data");
             console.log(dataSession);
 
-            let orderRefer = functions.getSessionStorageData("order");
+            let orderRefer = functions.getStorageData("order");
             console.log(orderRefer);
 
             //get element html
@@ -57,7 +57,7 @@ module.exports= {
 
                 //create elements
                 let divProduct = document.createElement('div');
-                divProduct.classList.add('product_display');
+                divProduct.classList.add('product_confirmation_display');
                 let productName = document.createElement('p');
                 let photo = document.createElement('img');
                 let productPrice = document.createElement('p');
@@ -67,7 +67,8 @@ module.exports= {
 
                 let urlImage = product.imageUrl;
                 let image = urlImage.replace("http://localhost:3000","");
-                photo.src =  "../"+ image;
+                photo.src =  "front/"+ image;
+                photo.alt = 'photo';
                 photo.classList.add("image_confirmation"); 
 
                 productName.innerHTML = product.name;
@@ -86,7 +87,7 @@ module.exports= {
             }
 
 
-           localStorage.clear();
+           //localStorage.clear();
 
         })
         /*.catch(function(req){
